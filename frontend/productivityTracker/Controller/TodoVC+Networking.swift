@@ -105,7 +105,16 @@ extension TodoVC
     }
     
     func saveGroupInDict(_ groupId: String, _ newGroup: Group) {
-        group[group.endIndex - 1].id = groupId
+        let numGroups = group.count
+        var indexOfLast = group.startIndex
+        for i in 0 ..< numGroups {
+            if group[i].id == nil {
+                indexOfLast = i
+                break
+            }
+        }
+        
+        group[indexOfLast].id = groupId
         groupsDict[groupId] = newGroup
     }
     

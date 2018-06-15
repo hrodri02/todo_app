@@ -60,17 +60,17 @@ extension LoginVC
                     completionHandler(userId, nil)
                 case .failure(_:):
                     self.createAlert(title: "Error", msg: "Failed to login.")
-                    
+                    debugPrint(response)
                 }
             }
             .responseString { (response) in
-                guard let statusCode = response.response?.statusCode else {return}
-                guard let value = response.result.value else {return}
-                
-                let userInfo: [String : Any] = [NSLocalizedDescriptionKey :  NSLocalizedString("Unauthorized", value: value, comment: "")]
-                let error = NSError(domain: "", code: statusCode, userInfo: userInfo)
-                
-                completionHandler(nil, error)
+//                guard let statusCode = response.response?.statusCode else {return}
+//                guard let value = response.result.value else {return}
+//
+//                let userInfo: [String : Any] = [NSLocalizedDescriptionKey :  NSLocalizedString("Unauthorized", value: value, comment: "")]
+//                let error = NSError(domain: "", code: statusCode, userInfo: userInfo)
+//
+//                completionHandler(nil, error)
             }
     }
 }

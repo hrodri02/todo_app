@@ -215,7 +215,7 @@ class GroupTVCell: UITableViewCell
         guard let imageViewTopAnchor = imageView?.topAnchor else {return}
         
         taskNameTextField.leftAnchor.constraint(equalTo: imageViewRightAnchor, constant: 5).isActive = true
-        taskNameTextField.rightAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        taskNameTextField.rightAnchor.constraint(equalTo: hoursTextField.leftAnchor, constant: -10).isActive = true
         taskNameTextField.topAnchor.constraint(equalTo: imageViewTopAnchor).isActive = true
     }
     

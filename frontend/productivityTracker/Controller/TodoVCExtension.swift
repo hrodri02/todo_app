@@ -86,6 +86,7 @@ extension TodoVC: UITextFieldDelegate, UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let index = indexPath.row
+            guard let groupId = group[index].id else {return}
             
             // remove group from array
             group.remove(at: index)
@@ -94,7 +95,6 @@ extension TodoVC: UITextFieldDelegate, UITableViewDataSource, UITableViewDelegat
             tableView.reloadData()
             
             // remove group from db
-            guard let groupId = group[index].id else {return}
             deleteGroup(groupId)
         }
     }

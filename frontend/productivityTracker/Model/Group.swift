@@ -23,6 +23,10 @@ class Group
     var numTasksCompletedDidChangeClosure: (()->())?
     
     func fractionOfTaskCompleted() -> Float {
+        if task.count == 0 {
+            return 0.0
+        }
+        
         return Float(numTasksCompleted) / Float(task.count)
     }
 }
