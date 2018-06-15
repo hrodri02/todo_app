@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey": "todo_jwtPrivateKey",
+    "db": "todo_db"
+}
