@@ -5,6 +5,7 @@ const {Group, validateGroup} = require('../models/group');
 const {Task, validateTask} = require('../models/task');
 const express = require('express');
 const router = express.Router();
+const moment = require('moment-timezone');
 
 // return all groups of user with given uid
 router.get('/', verify, async (req, res) => {
@@ -50,14 +51,14 @@ router.get('/:date', verify, async (req, res) => {
 
     let filteredGroups = new Array();
     groups.forEach( g => {
-        let dateStr = g.date.toLocaleString();
-        dateStr = dateStr.split(' ')[0];
-        dateStr = dateStr.split('-');
-        const yyyy = parseInt(dateStr[0]);
-        const mm = parseInt(dateStr[1]);
-        const dd = parseInt(dateStr[2]);
+        const pst = moment(g.date.toUTCString()).tz("America/Los_Angeles").format();
+        let pstDate = pst.split('T')[0];
+        pstDate = pstDate.split('-');
+        const groupYear = parseInt(pstDate[0]);
+        const groupMonth = parseInt(pstDate[1]);
+        const groupDay = parseInt(pstDate[2]);
 
-        if (yyyy == year && mm == month && dd == day) {
+        if (groupYear == year && groupMonth == month && groupDay == day) {
             filteredGroups.push(g);
         }
     });

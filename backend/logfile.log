@@ -845,9 +845,66 @@
 {"level":"info","message":"Connected to mongodb://localhost/todo_tests...","timestamp":"2018-06-13T00:36:49.218Z"}
 {"level":"info","message":"listening on port 3000...","timestamp":"2018-06-13T02:15:42.394Z"}
 {"level":"info","message":"Connected to mongodb://localhost/todo_tests...","timestamp":"2018-06-13T02:15:42.420Z"}
+<<<<<<< HEAD
 {"level":"info","message":"listening on port 3000...","timestamp":"2018-06-14T01:32:38.472Z"}
 {"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-14T01:32:38.509Z"}
 {"level":"info","message":"listening on port 3000...","timestamp":"2018-06-14T02:55:48.008Z"}
 {"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-14T02:55:48.041Z"}
 {"level":"info","message":"listening on port 3000...","timestamp":"2018-06-14T22:05:47.650Z"}
 {"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-14T22:05:47.690Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T02:06:23.148Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T02:06:23.184Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T15:10:02.469Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T15:10:02.509Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T15:48:58.364Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T15:48:58.407Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T15:59:35.090Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T15:59:35.130Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:00:44.891Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:00:44.925Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:01:02.955Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:01:03.005Z"}
+{"message":"g.date.toLocaleString(...).getMonth is not a function","stack":"TypeError: g.date.toLocaleString(...).getMonth is not a function\n    at groups.forEach.g (/Users/eri/Desktop/Eri's Files /productivityTracker/backend/routes/groups.js:52:45)\n    at Array.forEach (<anonymous>)\n    at router.get (/Users/eri/Desktop/Eri's Files /productivityTracker/backend/routes/groups.js:51:12)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error","timestamp":"2018-06-15T16:01:03.764Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:02:08.338Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:02:08.374Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:05:33.157Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:05:33.206Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:14:30.507Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:14:30.563Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:15:34.635Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:15:34.671Z"}
+{"message":"groups.remove is not a function","stack":"TypeError: groups.remove is not a function\n    at groups.forEach.g (/Users/eri/Desktop/Eri's Files /productivityTracker/backend/routes/groups.js:61:20)\n    at Array.forEach (<anonymous>)\n    at router.get (/Users/eri/Desktop/Eri's Files /productivityTracker/backend/routes/groups.js:51:12)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error","timestamp":"2018-06-15T16:15:37.537Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:16:22.777Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:16:22.824Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:16:48.995Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:16:49.034Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:17:55.347Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:17:55.397Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:18:57.866Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:18:57.899Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:19:24.438Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:19:24.479Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:21:48.148Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:21:48.193Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:23:22.563Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:23:22.596Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:24:29.142Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:24:29.183Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:27:27.572Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:27:27.618Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:29:08.048Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:29:08.094Z"}
+{"message":"Cannot read property 'push' of undefined","stack":"TypeError: Cannot read property 'push' of undefined\n    at groups.forEach.g (/Users/eri/Desktop/Eri's Files /productivityTracker/backend/routes/groups.js:70:28)\n    at Array.forEach (<anonymous>)\n    at router.get (/Users/eri/Desktop/Eri's Files /productivityTracker/backend/routes/groups.js:56:12)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error","timestamp":"2018-06-15T16:29:11.141Z"}
+{"message":"Cannot read property 'push' of undefined","stack":"TypeError: Cannot read property 'push' of undefined\n    at groups.forEach.g (/Users/eri/Desktop/Eri's Files /productivityTracker/backend/routes/groups.js:70:28)\n    at Array.forEach (<anonymous>)\n    at router.get (/Users/eri/Desktop/Eri's Files /productivityTracker/backend/routes/groups.js:56:12)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error","timestamp":"2018-06-15T16:30:20.447Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:30:31.317Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:30:31.351Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:32:54.623Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:32:54.656Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:33:08.199Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:33:08.234Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:33:42.851Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:33:42.887Z"}
+{"level":"info","message":"listening on port 3000...","timestamp":"2018-06-15T16:33:47.379Z"}
+{"level":"info","message":"Connected to mongodb://localhost/todo_db...","timestamp":"2018-06-15T16:33:47.421Z"}
+=======
+>>>>>>> 38c63d716b74ec02c56de6c7f12567088bc52c48
