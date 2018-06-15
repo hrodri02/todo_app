@@ -1,4 +1,4 @@
 Constants.swift
-./backend/constants.js
-./backend/coverage/
-./backend/node_modules/
+backend/constants.js
+backend/coverage/
+backend/node_modules/
