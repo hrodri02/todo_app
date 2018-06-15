@@ -33,8 +33,14 @@ extension GroupVC {
     }
     
     func setIdOfTask(_ taskId: String) {
-        guard var indexOfLast = group?.task.endIndex else {return}
-        indexOfLast -= 1
+        guard let numTasks = group?.task.count else {return}
+        guard var indexOfLast = group?.task.startIndex else {return}
+        for i in 0 ..< numTasks {
+            if group?.task[i].id == nil {
+                indexOfLast = i
+                break
+            }
+        }
         group?.task[indexOfLast].id = taskId
     }
     

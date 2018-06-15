@@ -42,7 +42,6 @@ extension GroupTVCell {
                     audioPlayer.stop()
                     audioPlayer.currentTime = 0
                 }
-                startStopButton.isEnabled = false
             }
         }
     }
@@ -53,7 +52,7 @@ extension GroupTVCell {
         
         guard let secondsSelected = task?.secondsSelected else {return}
         guard let seconds = task?.seconds else {return}
-        
+                
         task?.totalSeconds += secondsSelected - seconds
         task?.seconds = secondsSelected
         

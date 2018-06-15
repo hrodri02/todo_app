@@ -21,7 +21,15 @@ class GroupVC: UIViewController {
     let bottomView = GroupBottomView()
     
     var user: User?
-    var group: Group?
+    var group: Group? {
+        didSet {
+//            self.group?.numTasksCompletedDidChangeClosure = {
+                guard let progress = self.group?.fractionOfTaskCompleted() else {return}
+                self.topView.checklistProgressView.progress = progress
+                self.topView.progressLabel.text = "\(round(self.topView.checklistProgressView.progress * 10000) / 100) %"
+//            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +67,7 @@ class GroupVC: UIViewController {
     
     func updateChecklistProgress() {
         self.group?.numTasksCompletedDidChangeClosure = {
-            print("update progress")
             guard let progress = self.group?.fractionOfTaskCompleted() else {return}
-            print("progress: ", progress)
             self.topView.checklistProgressView.progress = progress
             self.topView.progressLabel.text = "\(round(self.topView.checklistProgressView.progress * 10000) / 100) %"
         }

@@ -55,16 +55,19 @@ class BarChart: UIView
         let chartDataSet = BarChartDataSet(values: dataEntry, label: "Minutes vs. Tasks")
         let chartData = BarChartData()
         chartData.addDataSet(chartDataSet)
-        chartData.setDrawValues(false)
+        chartData.setDrawValues(true)
         
         // axes setup
         let formatter = ChartFormatter()
         formatter.setValues(values: dataPoints)
         let xaxis = XAxis()
         xaxis.valueFormatter = formatter
+        barChartView.xAxis.valueFormatter = xaxis.valueFormatter
         barChartView.xAxis.labelPosition = .bottom
         barChartView.xAxis.drawGridLinesEnabled = false
-        barChartView.xAxis.valueFormatter = xaxis.valueFormatter
+        barChartView.xAxis.granularityEnabled = true
+        barChartView.xAxis.granularity = 1.0
+        
         barChartView.chartDescription?.enabled = false
         barChartView.legend.enabled = true
         barChartView.rightAxis.enabled = false

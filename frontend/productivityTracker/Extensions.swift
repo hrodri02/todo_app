@@ -95,6 +95,16 @@ extension String {
         return newString
     }
     
+    func removeLeadingZeros() -> String {
+        var newString = self
+        
+        while newString.hasPrefix("0") {
+            newString = String(newString.dropFirst())
+        }
+        
+        return newString
+    }
+    
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
     }

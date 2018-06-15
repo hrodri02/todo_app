@@ -46,6 +46,11 @@ extension TodoVC
                                 newTask.id = taskObj["_id"].stringValue
                                 newTask.name = taskObj["name"].stringValue
                                 newTask.isComplete = taskObj["isComplete"].boolValue
+                                
+                                if newTask.isComplete {
+                                    newGroup.numTasksCompleted += 1
+                                }
+                                
                                 newTask.totalSeconds = taskObj["totalSeconds"].intValue
                                 
                                 newGroup.task.append( newTask )

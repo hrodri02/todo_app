@@ -19,6 +19,12 @@ class GroupTVCell: UITableViewCell
                 setTextFields(time: TimeInterval(seconds))
             }
             
+            if let secondsSelected = task?.secondsSelected {
+                if secondsSelected == 0 {
+                    resetButton.isEnabled = false
+                }
+            }
+            
             if oldValue == nil {
                 setCheckBox()
             }
@@ -143,8 +149,6 @@ class GroupTVCell: UITableViewCell
         secsTextField.delegate = self
         minsTextField.delegate = self
         hoursTextField.delegate = self
-        
-        resetButton.isEnabled = false
         
         setupImageView()
         setupAuidoPlayer()
@@ -290,8 +294,6 @@ class GroupTVCell: UITableViewCell
     func updatCheckBox() {
         guard let taskCompleted = task?.isComplete else {return}
         
-        print("update checkbox")
-        
         if taskCompleted {
             imageView?.image = UIImage(named: "checked_checkbox")
             groupVC?.group?.numTasksCompleted += 1
@@ -307,23 +309,68 @@ class GroupTVCell: UITableViewCell
         let mins = Int(time) / 60 % 60
         let secs = Int(time) % 60
         
-        if hours > 0 || hoursTextField.text! != "" {
-            hoursTextField.text = String(describing: hours)
-        }
+        // set hours textfield
+        setHoursTextField(hours)
         
-        if hours > 0 || mins > 0 || minsTextField.text! != "" {
-            minsTextField.text = String(describing: mins)
-        }
+        // set mins textfield
+        setMinsTextField(hours, mins)
         
-        if hours > 0  || mins > 0 || secs > 0 || secsTextField.text! != "" {
-            secsTextField.text = String(describing: secs)
-        }
+        // set secs textfield
+        setSecsTextField(hours, mins, secs)
         
         self.time = hoursTextField.text! + minsTextField.text! + secsTextField.text!
+    }
+    
+    private func setHoursTextField(_ hours: Int) {
+        if hours > 0 {
+            hoursTextField.text = String(describing: hours)
+        }
+        else {
+            hoursTextField.text = ""
+        }
+    }
+    
+    private func setMinsTextField(_ hours: Int, _ mins: Int) {
+        if hours > 0 || mins > 0 {
+            minsTextField.text = String(describing: mins)
+        }
+        else {
+            minsTextField.text = ""
+        }
+        
+        // appending 0 to the back
+        if mins == 0 && hours > 0 {
+            minsTextField.text! += "0"
+        }
+        
+        // appending 0 to the front
+        if (0 < mins && mins < 10) && (hours > 0) {
+            minsTextField.text! = "0" + minsTextField.text!
+        }
+    }
+    
+    private func setSecsTextField(_ hours: Int, _ mins: Int, _ secs: Int) {
+        if hours > 0  || mins > 0 || secs > 0 {
+            secsTextField.text = String(describing: secs)
+        }
+        else if secsTextField.text! != "" {
+            secsTextField.text = "0"
+        }
+        
+        // appending 0 to the back
+        if secs == 0 && (mins > 0 || hours > 0) {
+            secsTextField.text! += "0"
+        }
+        
+        // appending 0 to the front
+        if (0 < secs && secs < 10) && (mins > 0 || hours > 0) {
+            secsTextField.text! = "0" + secsTextField.text!
+        }
     }
 }
 
 extension GroupTVCell: UITextFieldDelegate {
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         // shift characters right when user deletes a character
@@ -343,6 +390,31 @@ extension GroupTVCell: UITextFieldDelegate {
             time += string
         }
         
+        setTextFields(from: time)
+        
+        return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        secsTextField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        time = self.hoursTextField.text! + self.minsTextField.text! + self.secsTextField.text!
+        
+        time = time.removeLeadingZeros()
+        
+        setTextFields(from: time)
+        
+        guard let secs = secsTextField.text else {return}
+        guard let mins = minsTextField.text else {return}
+        guard let hours = hoursTextField.text else {return}
+        
+        computeSecs(hours: hours, mins: mins, secs: secs)
+    }
+    
+    private func setTextFields(from time: String) {
         var secs = ""
         var mins = ""
         var hours = ""
@@ -366,38 +438,35 @@ extension GroupTVCell: UITextFieldDelegate {
         self.secsTextField.text = secs
         self.minsTextField.text = mins
         self.hoursTextField.text = hours
+    }
+    
+    func computeSecs(hours: String, mins: String, secs: String) {
         
-        return false
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        secsTextField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        time = self.hoursTextField.text! + self.minsTextField.text! + self.secsTextField.text!
-        computeSecs()
-    }
-    
-    func computeSecs() {
         task?.seconds = 0
         guard var seconds = task?.seconds else {return}
         
-        if let secsStr = secsTextField.text, let secs = Int(secsStr) {
+        if let secs = Int(secs) {
             seconds += secs
         }
         
-        if let minsStr = minsTextField.text, let mins = Int(minsStr)  {
+        if let mins = Int(mins) {
             seconds += mins * 60
         }
         
-        if let hoursStr = hoursTextField.text, let hours = Int(hoursStr) {
+        if let hours = Int(hours) {
             seconds += hours * 3600
         }
         
         task?.seconds = seconds
         task?.secondsSelected = seconds
+        
+        if seconds > 0 {
+            startStopButton.isEnabled = true
+        }
+        else {
+            startStopButton.isEnabled = false
+        }
+        
         setTextFields(time: TimeInterval(seconds))
     }
 }

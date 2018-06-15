@@ -114,6 +114,7 @@ extension GroupVC: UITextFieldDelegate, UITableViewDataSource, UITableViewDelega
             
             if (task.id == nil) {
                 postTask(groupId, task, completionHandler: setIdOfTask)
+                
             }
             else if (oldTaskName != taskName) {
                 putTask(groupId, task)

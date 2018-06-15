@@ -42,7 +42,7 @@ class ChartVC: UIViewController, GetChartDataDelegate
         for i in 0 ..< groupTasks.count {
             if groupTasks[i].totalSeconds > 0
             {
-                barChart.tasks.append("\(i + 1)")
+                barChart.tasks.append(groupTasks[i].name)
                 
                 let totSecs = groupTasks[i].totalSeconds
                 let mins = Float(totSecs) / 60
