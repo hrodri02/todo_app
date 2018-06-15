@@ -28,20 +28,42 @@ router.get('/:date', verify, async (req, res) => {
     const _id = req.header('_id');
     const date = req.params.date.split('-');
 
-    const year = parseInt(date[0]);
-    const month = parseInt(date[1]) - 1;
-    const day = parseInt(date[2]);
+    // const dateGiven = new Date(year, month, day);
+    // const tomorrow = new Date(year, month, day+1);
 
-    const dateGiven = new Date(year, month, day);
-    const tomorrow = new Date(year, month, day+1);
+    // console.log(dateGiven.toLocaleString());
+    // console.log(tomorrow.toLocaleString());
+
+    // const groups = await Group
+    //     .find({ user: _id, date: {"$gte": dateGiven, "$lt": tomorrow} })
+    //     .populate('user', 'name -_id')
+    //     .sort('date');
 
     const groups = await Group
-        .find({ user: _id, date: {"$gte": dateGiven, "$lt": tomorrow} })
+        .find({ user: _id })
         .populate('user', 'name -_id')
         .sort('date');
 
+    const year = parseInt(date[0]);
+    const month = parseInt(date[1]);
+    const day = parseInt(date[2]);
+
+    let filteredGroups = new Array();
+    groups.forEach( g => {
+        let dateStr = g.date.toLocaleString();
+        dateStr = dateStr.split(' ')[0];
+        dateStr = dateStr.split('-');
+        const yyyy = parseInt(dateStr[0]);
+        const mm = parseInt(dateStr[1]);
+        const dd = parseInt(dateStr[2]);
+
+        if (yyyy == year && mm == month && dd == day) {
+            filteredGroups.push(g);
+        }
+    });
+
     // send group to client
-    res.send(groups);
+    res.send(filteredGroups);
 });
 
 // add a group
@@ -57,6 +79,10 @@ router.post('/', verify, async (req, res) => {
         name: req.body.name,
         user: req.body._id
     });
+
+    let date = group.date
+    console.log(date.getFullYear() + '-' + date.getMonth() + '-' +
+        date.getDate())
 
     // save group in database
     group = await group.save();
